@@ -1,0 +1,25 @@
+SELECT
+	T1.SlpName 'Representante'
+    ,T0.CardName 'Cliente'
+	,T0.CardCode 'Cod Cliente'
+	,T2.AddrType 'Tipo'
+	,T2.Street 'Endereco'
+	,T2.StreetNo 'Nr'
+	,T2.Building 'Complemento'
+	,T2.Block 'Bairro'
+	,T2.City 'Cidade'
+	,T2.State 'UF'
+	,T2.ZipCode 'CEP'
+	,T2.Country 'Pais'
+	,T0.Phone2 'DDD'
+	,T0.Phone1 'Telefone'
+	,T0.Fax 'Fax'
+	,T3.TaxId0 'CNPJ'
+	,T3.TaxId1 'Insc. Estadual'
+	,T0.Commission 'Comissao'
+FROM 
+		OCRD T0
+			JOIN OSLP T1 ON T1.SlpCode = T0.SlpCode								--Faz a junção do através do Código do Cliente
+			JOIN CRD1 T2 ON T0.CardCode = T2.CardCode and T2.AdresType='S'
+			JOIN CRD7 T3 ON T0.CardCode = T3.CardCode and T3.Address = ''
+where T1.SlpCode =  '[%0]'

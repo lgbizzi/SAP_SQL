@@ -1,5 +1,6 @@
 SELECT 
-	T0."DocEntry" AS "Documento",
+	T0."DocNum" AS "Documento",
+	T0."DocEntry" AS "Entrada",
 	T0."Serial" AS "Nº Nota Fiscal",
 	T0."CardCode" AS "Cód. Fornecedor",
 	T0."CardName" AS "Nome Fornecedor",
@@ -11,6 +12,6 @@ SELECT
 	
 FROM 
 	OPCH T0											--Tabela das Notas Fiscais de Entrada
-	JOIN PCH1 T1 ON T1."DocEntry" = T0."DocNum"		--Tabela dos Itens em Notas Fiscais de Entrada
+	JOIN PCH1 T1 ON T1."DocEntry" = T0."DocEntry"		--Tabela dos Itens em Notas Fiscais de Entrada
 WHERE	
-	T0.DocDate BETWEEN '[%0]' AND '[%1]'
+	T0."DocDate" BETWEEN '[%0]' AND '[%1]'

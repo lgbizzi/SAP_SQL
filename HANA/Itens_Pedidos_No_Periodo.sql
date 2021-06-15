@@ -1,5 +1,5 @@
 SELECT 
-	T0."DocEntry" AS "Documento",
+	T0."DocNum" AS "Documento",
 	T0."CardCode" AS "Cód. Fornecedor",
 	T0."CardName" AS "Nome Fornecedor",
 	T1."ItemCode" AS "Cód. do Item",
@@ -11,7 +11,7 @@ SELECT
 	T0."TaxDate" AS "Data do Documento"
 	
 FROM 
-	OPOR T0												--Tabela dos Pedidos
-	JOIN POR1 T1 ON T1."DocEntry" = T0."DocNum"			--Tabela dos Itens em um Pedido
+	OPOR T0							--Tabela dos Pedidos
+	JOIN POR1 T1 ON T1."DocEntry" = T0."DocEntry"		-- Tabela dos Itens em um Pedido
 WHERE	
-	T0."DocDate" BETWEEN '[%0]' AND '[%1]'				--Entre Data Inicial e Dada Final
+	T0."DocDate" BETWEEN '[%0]' AND '[%1]'			--Entre Data Inicial e Data Final
